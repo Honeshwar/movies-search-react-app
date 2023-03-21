@@ -1,0 +1,16 @@
+.navbar{
+    width: 100%;
+    height:7%;
+    background-color: midnightblue;
+}
+.searchInput{
+    width: 40%;
+    height:80%;
+    border-radius: 10px;
+}
+
+.searchBtn{
+    width: 10%;
+    height:80%;
+    border-radius: 10px;
+}

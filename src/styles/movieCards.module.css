@@ -1,0 +1,77 @@
+.movies{
+width: 100%;
+height: 90%;
+}
+
+.moviesRoute{
+    width: 100%;
+    height: 7%;
+}
+.movieList{
+    width: 100%;
+    height: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    overflow-y: scroll;
+    
+}
+.movieBox{
+    width: 300px;
+    height: 500px;
+    /* border: solid; */
+    list-style: none;
+    border-radius: 20px;
+    box-shadow: 0 0 2px 1px wheat;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+   
+}
+.movieImage{
+    width: 100%;
+    height: 50%;
+}
+.movieImage img{
+    width: 100%;
+    height:100%;
+}
+.movieDetails{
+    width: 100%;
+    height: 50%;
+    padding: 10px;
+}
+.movieDetails h1{
+    width: 100%;
+    height: 10%;
+   
+}
+
+.movieDetails p{
+    width: 100%;
+    height: 50%;
+   overflow-y: scroll;
+}
+
+.movieDetails div{
+    width: 100%;
+    /* height: 30%; */
+   
+}
+
+.movieRatingFavorite{
+
+}
+.movieDetails div input{
+   margin-left: 30px;
+   width: 70px;
+   height: 30px;
+   background-color: blue;
+   color: white;
+
+}
+.movieDetails div input:hover
+{
+    background-color: white;
+    color: blue;
+}
