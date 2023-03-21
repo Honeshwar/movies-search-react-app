@@ -4,7 +4,7 @@ function Navbar() {
   return (
     <div className={styles.navbar}>
      
-            <input className={styles.searchInput} type='text' placeholder='search movies here....' required='true'></input>
+            <input className={styles.searchInput} type='text' placeholder='search movies here....' required></input>
             <button className={styles.searchBtn} type='submit'>Search</button>
        
     </div>
