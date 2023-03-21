@@ -10,7 +10,7 @@ import {addMovies} from '../actions'
 
 function App(props) {
   console.log("from access through ReactReduxContext",useContext(ReactReduxContext));
-  const {store} = useContext(ReactReduxContext);//{store,subscription,getSeverState}//props;
+  const {store} = useContext(ReactReduxContext);//{store:{},subscription:{},getSeverState:}//props;
   const [re_Render, set_RE_Render] = useState(false);
 
   useEffect(() => {
@@ -30,7 +30,8 @@ function App(props) {
   
   }, [])
   
-  const data1=store.getState();
+  const {moviesList:movies} = store.getState();// return {moviesList:[],favorites:[]}
+  console.log("state before return",store.getState());
   return (
     
     <div className="App">
@@ -42,7 +43,7 @@ function App(props) {
           </div>
 
           <div className={styles.movieList}>
-              {data1.map((movie,index)=>(
+              {movies.map((movie,index)=>(
                 <MovieCards movie={movie} key={`movie-${index}`}/>
               ))}
           </div>
