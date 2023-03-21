@@ -4,10 +4,12 @@ import MovieCards from './MovieCards';
 import Navbar from './Navbar';
 import styles from '../styles/movieCards.module.css';
 import {data} from '../data';//array
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import {ReactReduxContext} from 'react-redux';
 
 function App(props) {
-  const {store} = props;
+  console.log("from access through ReactReduxContext",useContext(ReactReduxContext));
+  const {store} = useContext(ReactReduxContext);//{store,subscription,getSeverState}//props;
   const [re_Render, set_RE_Render] = useState(false);
 
   useEffect(() => {
@@ -32,6 +34,7 @@ function App(props) {
   
   const data1=store.getState();
   return (
+    
     <div className="App">
       <Navbar/>  
       <div className={styles.movies}>
@@ -47,6 +50,7 @@ function App(props) {
           </div>
       </div>
     </div>
+
   );
 }
 
