@@ -6,6 +6,7 @@ import styles from '../styles/movieCards.module.css';
 import {data} from '../data';//array
 import { useContext, useEffect, useState } from 'react';
 import {ReactReduxContext} from 'react-redux';
+import {addMovies} from '../actions'
 
 function App(props) {
   console.log("from access through ReactReduxContext",useContext(ReactReduxContext));
@@ -22,10 +23,7 @@ function App(props) {
     //api call to get data of movie
     const response=data;
     //dispatch action that store this data to redux store
-    store.dispatch({
-      type:"ADD_MOVIES",
-      movies:response,
-    });
+    store.dispatch(addMovies(response));
 
     console.log('state',store.getState());
 
