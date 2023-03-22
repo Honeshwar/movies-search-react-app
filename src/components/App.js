@@ -5,22 +5,22 @@ import Navbar from './Navbar';
 import styles from '../styles/movieCards.module.css';
 import { data } from '../data';//array
 import { useContext, useEffect, useState } from 'react';
-import { ReactReduxContext } from 'react-redux';
+import { ReactReduxContext, connect, useSelector, use } from "react-redux";
 import { addMovies, setFavoriteTab } from '../actions'
 
 function App(props) {
   // console.log("from access through ReactReduxContext",useContext(ReactReduxContext));
   const { store } = useContext(ReactReduxContext);//{store:{},subscription:{},getSeverState:}//props;
-  const [re_Render, set_RE_Render] = useState(false);
-
-  useEffect(() => {
+    useEffect(() => {
     //subscribe
-    store.subscribe(() => {
-      console.log("UPDATED");
-      console.log('state at subscribe', store.getState());
-      set_RE_Render(true);
-      // console.log("UPDATED2");
-    });
+    // store.subscribe(() => {
+    //   console.log("UPDATED");
+    //   console.log('state at subscribe', store.getState());
+    //   set_RE_Render(true);
+    //   // console.log("UPDATED2");
+    // });
+
+
     //api call to get data of movie
     const response = data;
     //dispatch action that store this data to redux store
@@ -30,9 +30,13 @@ function App(props) {
 
 
   }, [])
+  const [re_Render, set_RE_Render] = useState(false);
 
-  const { moviesList: movies, favorites: favoriteMoviesList, isFavoriteTab } = store.getState();// return {moviesList:[],favorites:[]}
+  //subscribe specific part + extract that part
+  const state = useSelector((state)=>state);
 
+  // const { moviesList: movies, favorites: favoriteMoviesList, isFavoriteTab } = store.getState();// return {moviesList:[],favorites:[]}
+  const { moviesList: movies, favorites: favoriteMoviesList, isFavoriteTab } = state;
   const displayMovies = isFavoriteTab ? favoriteMoviesList : movies;
   // console.log("state before return",store.getState());
 
@@ -69,6 +73,7 @@ function App(props) {
               key={`movie-${index}`}
               isFavorite={isFavorite(movie)}
               setState={{ set_RE_Render, re_Render }}
+              store={store}
             />
           ))}
 

@@ -3,21 +3,21 @@ import styles from '../styles/movieCards.module.css';
 import getStore from '../store';
 import { addFavorite,removeFavorite } from '../actions';
 
-function MovieCards ({ movie , isFavorite ,setState}) {
+function MovieCards ({ movie , isFavorite ,setState,store}) {
 // console.log("moviecards")
-    const store = getStore();
+    // const store = getStore();
 
     // favoriteClickHandler
    const favoriteClickHandler = ()=>{
         //dispatch method use to change state
 
         store.dispatch(addFavorite(movie));//particular comp pass props
-        setState.set_RE_Render(setState.re_Render?false:true);
+        // setState.set_RE_Render(setState.re_Render?false:true);
     }
 
    const unFavoriteClickHandler = ()=>{
     store.dispatch(removeFavorite(movie));//particular comp pass props
-    setState.set_RE_Render(setState.re_Render?false:true);
+    // setState.set_RE_Render(setState.re_Render?false:true);
    }
 
   return (
