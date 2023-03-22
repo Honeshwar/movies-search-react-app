@@ -3,3 +3,17 @@
   width: 100vw;
   height: 100vh;
 }
+
+.moviesTab{
+  margin-left: 20px;
+  margin-right: 10px;
+}
+.favoriteTab{
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+.activeTab{
+  color: white;
+  background-color: blue;
+}

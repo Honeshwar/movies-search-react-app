@@ -1,9 +1,10 @@
-import { ADD_MOVIES,ADD_FAVORITE,REMOVE_FAVORITE} from "../actions";
+import { ADD_MOVIES,ADD_TO_FAVORITE,REMOVE_FROM_FAVORITE,FAVORITE_TAB} from "../actions";
 
 //if state pass undefined from store , so this assign to state
 const initialStateValue = {//by default state,state tree object inside multiple states presents
     moviesList:[],
-    favorites:[]
+    favorites:[],
+    isFavoriteTab:false
 };
 
 
@@ -23,12 +24,12 @@ export default function movies (state = initialStateValue,action){// pass state 
                 moviesList:action.movies
             };//already exist key update react
             // break;
-        case ADD_FAVORITE:
+        case ADD_TO_FAVORITE:
             return {
                 ...state,
                 favorites:[action.movie,...state.favorites]
             };
-        case REMOVE_FAVORITE:
+        case REMOVE_FROM_FAVORITE:
             // const index = state.favorites.indexOf(action.movie);
             // let favorites = [];
             // if(index !== -1){
@@ -42,7 +43,12 @@ export default function movies (state = initialStateValue,action){// pass state 
             return {
                 ...state,
                 favorites,
-            };      
+            };  
+        case FAVORITE_TAB:
+            return {
+                ...state,
+               isFavoriteTab:action.isFavoriteTab
+            };    
         default:
             return state;
            
