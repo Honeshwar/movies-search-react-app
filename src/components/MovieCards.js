@@ -1,7 +1,25 @@
 import React from 'react'
 import styles from '../styles/movieCards.module.css';
+import getStore from '../store';
+import { addFavorite,removeFavorite } from '../actions';
 
-function MovieCards({movie}) {
+function MovieCards ({ movie , isFavorite ,setState}) {
+// console.log("moviecards")
+    const store = getStore();
+
+    // favoriteClickHandler
+   const favoriteClickHandler = ()=>{
+        //dispatch method use to change state
+
+        store.dispatch(addFavorite(movie));//particular comp pass props
+        setState.set_RE_Render(setState.re_Render?false:true);
+    }
+
+   const unFavoriteClickHandler = ()=>{
+    store.dispatch(removeFavorite(movie));//particular comp pass props
+    setState.set_RE_Render(setState.re_Render?false:true);
+   }
+
   return (
    <>
   
@@ -14,7 +32,11 @@ function MovieCards({movie}) {
                 <p>{movie.Plot}</p>
                 <div className={styles.movieRatingFavorite}>
                     <span>{movie.Ratings[0].Value}</span>
-                    <input type='button' value='Favorite'></input>
+                    {isFavorite?
+                    <input className={styles.unFavorite} type='button' value='UnFavorite' onClick={unFavoriteClickHandler}></input>
+                    :
+                    <input className={styles.favorite} type='button' value='Favorite' onClick={favoriteClickHandler}></input>
+                    }
                 </div>
             </div>
         </li>

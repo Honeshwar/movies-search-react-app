@@ -9,7 +9,7 @@ import {ReactReduxContext} from 'react-redux';
 import {addMovies} from '../actions'
 
 function App(props) {
-  console.log("from access through ReactReduxContext",useContext(ReactReduxContext));
+  // console.log("from access through ReactReduxContext",useContext(ReactReduxContext));
   const {store} = useContext(ReactReduxContext);//{store:{},subscription:{},getSeverState:}//props;
   const [re_Render, set_RE_Render] = useState(false);
 
@@ -17,8 +17,9 @@ function App(props) {
     //subscribe
     store.subscribe(()=>{
       console.log("UPDATED");
-      set_RE_Render(true)
-
+      console.log('state at subscribe',store.getState());
+      set_RE_Render(true);
+      // console.log("UPDATED2");
     });
     //api call to get data of movie
     const response=data;
@@ -30,8 +31,18 @@ function App(props) {
   
   }, [])
   
-  const {moviesList:movies} = store.getState();// return {moviesList:[],favorites:[]}
-  console.log("state before return",store.getState());
+  const {moviesList:movies,favorites:favoriteMoviesList} = store.getState();// return {moviesList:[],favorites:[]}
+  // console.log("state before return",store.getState());
+
+// create this func here because so at once create not as may time as may movie card comp
+  function isFavorite(movie){
+    const index = favoriteMoviesList.indexOf(movie);
+
+    if(index !== -1){
+      return true;//found movie in favoriteMoviesList
+    }
+    return false;//not found
+  }
   return (
     
     <div className="App">
@@ -44,7 +55,12 @@ function App(props) {
 
           <div className={styles.movieList}>
               {movies.map((movie,index)=>(
-                <MovieCards movie={movie} key={`movie-${index}`}/>
+                <MovieCards
+                 movie={movie} 
+                 key={`movie-${index}`}
+                 isFavorite={isFavorite(movie)}
+                 setState={{set_RE_Render,re_Render}}
+                 />
               ))}
           </div>
       </div>

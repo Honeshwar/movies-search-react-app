@@ -63,16 +63,40 @@ height: 90%;
 .movieRatingFavorite{
 
 }
-.movieDetails div input{
+.favorite{
    margin-left: 30px;
    width: 70px;
    height: 30px;
    background-color: blue;
    color: white;
 
+   border-bottom: 1px solid;
+   border-right: 1px solid;
 }
-.movieDetails div input:hover
+.unFavorite{
+    margin-left: 30px;
+    width: 100px;
+    height: 30px;
+    background-color: rgb(207, 5, 5);
+    color: white;
+ 
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+}
+.favorite:hover
 {
-    background-color: white;
-    color: blue;
+    /* background-color: white;
+    color: blue; */
+
+    border-left: 1px solid;
+    border-top: 1px solid;
+}
+
+.unFavorite:hover
+{
+    /* background-color: white;
+    color: blue; */
+
+    border-left: 1px solid;
+    border-top: 1px solid;
 }
