@@ -2,15 +2,24 @@
 .App{
   width: 100vw;
   height: 100vh;
+  /* background-image: url('https://th.bing.com/th/id/OIP.C6JR-csIdbPWWkn7gjDDlAHaKm?w=186&h=267&c=7&r=0&o=5&pid=1.7'); */
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .moviesTab{
   margin-left: 20px;
   margin-right: 10px;
+  height:40px;
+  width: 80px;
+  margin-top: 1px;
 }
 .favoriteTab{
   margin-left: 20px;
   margin-right: 10px;
+  height:40px;
+  width: 80px;
+  margin-top: 1px;
 }
 
 .activeTab{
