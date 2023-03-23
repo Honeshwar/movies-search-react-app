@@ -5,14 +5,23 @@ import rootReducer from '../reducers';//combineReducers
 // console.log("combine Reducers",rootReducer);
 
 //console.log action type before each dispatch
-const logger = function (obj){//obj={dispatch,getState}
-            return function(next){
-                return function(action){
-                    console.log('action type = ',action.type);
-                    next(action);//not call than never an dispatch happen
-                }
+// const logger = function (obj){//obj={dispatch,getState}
+//             return function(next){
+//                 return function(action){
+//                     console.log('action type = ',action.type);
+//                     next(action);//not call than never an dispatch happen
+//                 }
+//             }
+// }
+
+//modifying middleware using arrow function,to write less code
+const logger = ({dispatch,getState})=>(next)=>(action)=>{
+                //middleware code
+                console.log('action type = ',action.type);
+                next(action);//not call than never an dispatch happen
             }
-}
+    
+
 
 const store = configureStore({
     reducer:rootReducer ,
