@@ -1,12 +1,14 @@
 // import { createStore } from 'redux';
 import {configureStore} from '@reduxjs/toolkit';
-import movies from '../reducers';
+import rootReducer from '../reducers';
 
-const store = configureStore({reducer:movies});
+const store = configureStore({
+    reducer:rootReducer
+});
 console.log('store',store);
 
 export  {store};
-
+export {rootReducer};
 // const store = createStore(movies);
 
 // console.log('Before state',store.getState());

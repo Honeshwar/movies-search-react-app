@@ -1,14 +1,14 @@
 import { ADD_MOVIES,ADD_TO_FAVORITE,REMOVE_FROM_FAVORITE,FAVORITE_TAB} from "../actions";
 
 //if state pass undefined from store , so this assign to state
-const initialStateValue = {//by default state,state tree object inside multiple states presents
+const initialMoviesReducerStateValue = {//by default state,state tree object inside multiple states presents
     moviesList:[],
     favorites:[],
     isFavoriteTab:false
 };
 
 
-export default function movies (state = initialStateValue,action){// pass state that present in redux store
+ function movies (state = initialMoviesReducerStateValue,action){// pass state that present in redux store
     // if(action.type === ADD_MOVIES){
     //     return {
     //         ...state,
@@ -52,5 +52,29 @@ export default function movies (state = initialStateValue,action){// pass state 
         default:
             return state;
            
+    }
+}
+
+
+const initialSearchReducerStateValue = {//by default state,state tree object inside multiple states presents
+   result:[]
+};
+
+
+ function searchReducer (state = initialSearchReducerStateValue,action){// pass state that present in redux store
+   return state;
+}
+
+//root reducer
+const initialRootReducerStateValue={
+    movies:initialMoviesReducerStateValue,
+    search:initialSearchReducerStateValue
+
+}
+
+export default function rootReducer(state= initialRootReducerStateValue,action){
+    return{
+        movies:movies(state.movies,action),
+        search:searchReducer(state.search,action),
     }
 }

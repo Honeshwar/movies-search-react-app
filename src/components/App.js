@@ -24,9 +24,9 @@ function App() {
     //api call to get data of movie
     const response = data;
     //dispatch action that store this data to redux store
-    const a = store.dispatch(addMovies(response));
-    console.log('dispatch return ', a);
-    console.log('state', store.getState());
+    const dispatchedActionObject = store.dispatch(addMovies(response));
+    console.log("dispatched Action Object in useEffect after mounted", dispatchedActionObject);
+    console.log('get state after mounter', store.getState());
 
 
   }, [store])
@@ -34,10 +34,13 @@ function App() {
 
   //subscribe specific part + extract that part
   const state = useSelector((state)=>state);
+  console.log("state after useSelector/ after any change in Redux Store",state);
 
   // const { moviesList: movies, favorites: favoriteMoviesList, isFavoriteTab } = store.getState();// return {moviesList:[],favorites:[]}
-  const { moviesList: movies, favorites: favoriteMoviesList, isFavoriteTab } = state;
-  const displayMovies = isFavoriteTab ? favoriteMoviesList : movies;
+  const {movies}=state;//{movies,search}
+  const { moviesList, favorites: favoriteMoviesList, isFavoriteTab } = movies;
+
+  const displayMovies = isFavoriteTab ? favoriteMoviesList : moviesList;
   // console.log("state before return",store.getState());
 
   // create this func here because so at once create not as may time as may movie card comp
@@ -53,7 +56,8 @@ function App() {
   // favoriteTabHandler
   const favoriteTabHandler = (favoriteTab) => {
     if (favoriteTab === isFavoriteTab) { return };
-    store.dispatch(setFavoriteTab(favoriteTab));//store dispatch the action and pass to reducer
+    const dispatchedActionObject = store.dispatch(setFavoriteTab(favoriteTab));//store dispatch the action and pass to reducer
+    console.log("dispatched Action Object ", dispatchedActionObject);
 
   }
   return (

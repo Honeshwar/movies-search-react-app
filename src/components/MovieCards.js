@@ -3,22 +3,31 @@ import styles from '../styles/movieCards.module.css';
 import { addFavorite,removeFavorite } from '../State_Management/actions';
 
 function MovieCards ({ movie , isFavorite ,store}) {
-// console.log("moviecards")
-    // const store = getStore();
 
     // favoriteClickHandler
    const favoriteClickHandler = ()=>{
         //dispatch method use to change state
-
-        store.dispatch(addFavorite(movie));//particular comp pass props
-        // setState.set_RE_Render(setState.re_Render?false:true);
+        const dispatchedActionObject = store.dispatch(addFavorite(movie));//particular comp pass props
+        console.log("dispatched Action Object ", dispatchedActionObject);
     }
 
    const unFavoriteClickHandler = ()=>{
-    store.dispatch(removeFavorite(movie));//particular comp pass props
-    // setState.set_RE_Render(setState.re_Render?false:true);
+    const dispatchedActionObject = store.dispatch(removeFavorite(movie));//particular comp pass props
+    console.log("dispatched Action Object ", dispatchedActionObject);
    }
 
+   //making two func as one,()=>{ClickHandler(true)//call func.} in onCLick
+   const ClickHandler = (isFavoriteClick)=>{
+    if(isFavoriteClick){
+        //dispatch method use to change state
+        const dispatchedActionObject =  store.dispatch(addFavorite(movie));//particular comp pass props
+        console.log("dispatched Action Object ", dispatchedActionObject);
+        return;
+    }
+    const dispatchedActionObject = store.dispatch(removeFavorite(movie));//particular comp pass props
+    console.log("dispatched Action Object ", dispatchedActionObject);
+   
+   }
   return (
    <>
   
