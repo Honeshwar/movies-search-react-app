@@ -1,9 +1,8 @@
 import React from 'react'
 import styles from '../styles/movieCards.module.css';
-import getStore from '../store';
-import { addFavorite,removeFavorite } from '../actions';
+import { addFavorite,removeFavorite } from '../State_Management/actions';
 
-function MovieCards ({ movie , isFavorite ,setState,store}) {
+function MovieCards ({ movie , isFavorite ,store}) {
 // console.log("moviecards")
     // const store = getStore();
 

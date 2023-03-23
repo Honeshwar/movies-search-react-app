@@ -4,11 +4,11 @@ import MovieCards from './MovieCards';
 import Navbar from './Navbar';
 import styles from '../styles/movieCards.module.css';
 import { data } from '../data';//array
-import { useContext, useEffect, useState } from 'react';
-import { ReactReduxContext, connect, useSelector, use } from "react-redux";
-import { addMovies, setFavoriteTab } from '../actions'
+import { useContext, useEffect } from 'react';
+import { ReactReduxContext, useSelector } from "react-redux";
+import { addMovies, setFavoriteTab } from '../State_Management/actions';
 
-function App(props) {
+function App() {
   // console.log("from access through ReactReduxContext",useContext(ReactReduxContext));
   const { store } = useContext(ReactReduxContext);//{store:{},subscription:{},getSeverState:}//props;
     useEffect(() => {
@@ -29,8 +29,8 @@ function App(props) {
     console.log('state', store.getState());
 
 
-  }, [])
-  const [re_Render, set_RE_Render] = useState(false);
+  }, [store])
+ 
 
   //subscribe specific part + extract that part
   const state = useSelector((state)=>state);
@@ -62,8 +62,8 @@ function App(props) {
       <Navbar />
       <div className={styles.movies}>
         <div className={styles.tabs}>
-          <button className={`moviesTab  ${isFavoriteTab ? '' : 'activeTab'}`} type='button' onClick={() => { favoriteTabHandler(false); set_RE_Render(true); }}>Movies</button>
-          <button className={`favoriteTab  ${isFavoriteTab ? 'activeTab' : ''}`} type='button' onClick={() => { favoriteTabHandler(true); set_RE_Render(true); }}>Favorites</button>
+          <button className={`moviesTab  ${isFavoriteTab ? '' : 'activeTab'}`} type='button' onClick={() => { favoriteTabHandler(false); }}>Movies</button>
+          <button className={`favoriteTab  ${isFavoriteTab ? 'activeTab' : ''}`} type='button' onClick={() => { favoriteTabHandler(true); }}>Favorites</button>
         </div>
 
         <div className={styles.movieList}>
@@ -72,7 +72,6 @@ function App(props) {
               movie={movie}
               key={`movie-${index}`}
               isFavorite={isFavorite(movie)}
-              setState={{ set_RE_Render, re_Render }}
               store={store}
             />
           ))}

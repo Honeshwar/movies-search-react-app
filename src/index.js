@@ -1,20 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import { createStore } from 'redux';
-import {configureStore} from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
+import {store} from './State_Management/store';
 
 import './styles/index.css';
 import App from './components/App';
-import movies from './reducers';
 
-// const store = createStore(movies);
-const store = configureStore({reducer:movies});
-console.log('store',store);
-
-// console.log('Before state',store.getState());
-// store.dispatch({type:"ADD_MOVIES",movies : [{name:"Danger"}]});//action pass here
-// console.log('After state',store.getState());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
