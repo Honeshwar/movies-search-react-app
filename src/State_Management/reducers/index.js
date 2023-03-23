@@ -1,3 +1,4 @@
+import { combineReducers} from '@reduxjs/toolkit';
 import { ADD_MOVIES,ADD_TO_FAVORITE,REMOVE_FROM_FAVORITE,FAVORITE_TAB} from "../actions";
 
 //if state pass undefined from store , so this assign to state
@@ -65,16 +66,23 @@ const initialSearchReducerStateValue = {//by default state,state tree object ins
    return state;
 }
 
-//root reducer
-const initialRootReducerStateValue={
-    movies:initialMoviesReducerStateValue,
-    search:initialSearchReducerStateValue
+// //root reducer
+// const initialRootReducerStateValue={
+//     movies:initialMoviesReducerStateValue,
+//     search:initialSearchReducerStateValue
 
-}
+// }
 
-export default function rootReducer(state= initialRootReducerStateValue,action){
-    return{
-        movies:movies(state.movies,action),
-        search:searchReducer(state.search,action),
-    }
-}
+// export default function rootReducer(state= initialRootReducerStateValue,action){
+//     return{
+//         movies:movies(state.movies,action),
+//         search:searchReducer(state.search,action),
+//     }
+// }
+
+
+//combineReducer function/method
+export default combineReducers({
+    movies:movies,
+    search:searchReducer
+})
