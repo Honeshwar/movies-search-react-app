@@ -57,7 +57,7 @@ function App() {
   const favoriteTabHandler = (favoriteTab) => {
     if (favoriteTab === isFavoriteTab) { return };
     const dispatchedActionObject = store.dispatch(setFavoriteTab(favoriteTab));//store dispatch the action and pass to reducer
-    console.log("dispatched Action Object ", dispatchedActionObject);
+    // console.log("dispatched Action Object ", dispatchedActionObject);
 
   }
   return (

@@ -8,12 +8,12 @@ function MovieCards ({ movie , isFavorite ,store}) {
    const favoriteClickHandler = ()=>{
         //dispatch method use to change state
         const dispatchedActionObject = store.dispatch(addFavorite(movie));//particular comp pass props
-        console.log("dispatched Action Object ", dispatchedActionObject);
+        // console.log("dispatched Action Object ", dispatchedActionObject);
     }
 
    const unFavoriteClickHandler = ()=>{
     const dispatchedActionObject = store.dispatch(removeFavorite(movie));//particular comp pass props
-    console.log("dispatched Action Object ", dispatchedActionObject);
+    // console.log("dispatched Action Object ", dispatchedActionObject);
    }
 
    //making two func as one,()=>{ClickHandler(true)//call func.} in onCLick
@@ -21,11 +21,11 @@ function MovieCards ({ movie , isFavorite ,store}) {
     if(isFavoriteClick){
         //dispatch method use to change state
         const dispatchedActionObject =  store.dispatch(addFavorite(movie));//particular comp pass props
-        console.log("dispatched Action Object ", dispatchedActionObject);
+        // console.log("dispatched Action Object ", dispatchedActionObject);
         return;
     }
     const dispatchedActionObject = store.dispatch(removeFavorite(movie));//particular comp pass props
-    console.log("dispatched Action Object ", dispatchedActionObject);
+    // console.log("dispatched Action Object ", dispatchedActionObject);
    
    }
   return (
