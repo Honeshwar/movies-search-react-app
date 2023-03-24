@@ -20,6 +20,7 @@ import rootReducer from '../reducers';//combineReducers
 // const logger = ({ dispatch, getState }) => (next) => (action) => {
 //     //middleware code
 
+//condition due to thunk ,thunk allow action creator to return an func, action=action Obj/func
 //     if (typeof action !== 'function') {
 //         console.log('action type = ', action.type);
 //     }

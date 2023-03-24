@@ -1,18 +1,18 @@
 import React from 'react'
 import styles from '../styles/movieCards.module.css';
-import { addFavorite,removeFavorite } from '../State_Management/actions';
+import { addToFavorite,removeFromFavorite } from '../State_Management/actions';
 
 function MovieCards ({ movie , isFavorite ,store}) {
 
     // favoriteClickHandler
    const favoriteClickHandler = ()=>{
         //dispatch method use to change state
-        const dispatchedActionObject = store.dispatch(addFavorite(movie));//particular comp pass props
+        const dispatchedActionObject = store.dispatch(addToFavorite(movie));//particular comp pass props
         // console.log("dispatched Action Object ", dispatchedActionObject);
     }
 
    const unFavoriteClickHandler = ()=>{
-    const dispatchedActionObject = store.dispatch(removeFavorite(movie));//particular comp pass props
+    const dispatchedActionObject = store.dispatch(removeFromFavorite(movie));//particular comp pass props
     // console.log("dispatched Action Object ", dispatchedActionObject);
    }
 
@@ -20,14 +20,15 @@ function MovieCards ({ movie , isFavorite ,store}) {
    const ClickHandler = (isFavoriteClick)=>{
     if(isFavoriteClick){
         //dispatch method use to change state
-        const dispatchedActionObject =  store.dispatch(addFavorite(movie));//particular comp pass props
+        const dispatchedActionObject =  store.dispatch(addToFavorite(movie));//particular comp pass props
         // console.log("dispatched Action Object ", dispatchedActionObject);
         return;
     }
-    const dispatchedActionObject = store.dispatch(removeFavorite(movie));//particular comp pass props
+    const dispatchedActionObject = store.dispatch(removeFromFavorite(movie));//particular comp pass props
     // console.log("dispatched Action Object ", dispatchedActionObject);
    
    }
+//    console.log("movie in movie card ",movie)
   return (
    <>
   

@@ -1,5 +1,5 @@
 import { combineReducers} from '@reduxjs/toolkit';
-import { ADD_MOVIES,ADD_TO_FAVORITE,REMOVE_FROM_FAVORITE,FAVORITE_TAB,ADD_MOVIES_TO_SEARCH_RESULT} from "../actions";
+import { ADD_TO_MOVIES,ADD_TO_FAVORITE,REMOVE_FROM_FAVORITE,FAVORITE_TAB,ADD_MOVIES_TO_SEARCH_RESULT,ADD_MOVIE_FROM_SEARCH_TO_MOVIESLIST} from "../actions";
 
 //if state pass undefined from store , so this assign to state
 const initialMoviesReducerStateValue = {//by default state,state tree object inside multiple states presents
@@ -19,7 +19,7 @@ const initialMoviesReducerStateValue = {//by default state,state tree object ins
     // return state;
    
     switch (action.type) {
-        case ADD_MOVIES:
+        case ADD_TO_MOVIES:
             return {
                 ...state,
                 moviesList:action.movies
@@ -28,7 +28,7 @@ const initialMoviesReducerStateValue = {//by default state,state tree object ins
         case ADD_TO_FAVORITE:
             return {
                 ...state,
-                favorites:[action.movie,...state.favorites]
+                favorites:[action.movie,...state.favorites],
             };
         case REMOVE_FROM_FAVORITE:
             // const index = state.favorites.indexOf(action.movie);
@@ -49,6 +49,11 @@ const initialMoviesReducerStateValue = {//by default state,state tree object ins
             return {
                 ...state,
                isFavoriteTab:action.isFavoriteTab
+            };
+        case ADD_MOVIE_FROM_SEARCH_TO_MOVIESLIST:
+            return {
+                ...state,
+                moviesList:[action.movie,...state.moviesList]
             };    
         default:
             return state;
@@ -58,7 +63,8 @@ const initialMoviesReducerStateValue = {//by default state,state tree object ins
 
 
 const initialSearchReducerStateValue = {//by default state,state tree object inside multiple states presents
-   results:{}
+   result:{},
+   isMovieInSearchResult:false,
 };
 
 
@@ -67,7 +73,15 @@ const initialSearchReducerStateValue = {//by default state,state tree object ins
     switch (action.type) {
         case ADD_MOVIES_TO_SEARCH_RESULT:
             return {
-               results:action.movie
+                ...state,
+               result:action.movie,
+               isMovieInSearchResult:true,
+            };
+        case ADD_MOVIE_FROM_SEARCH_TO_MOVIESLIST:
+            return {
+                ...state,
+                result:action.movie,
+                isMovieInSearchResult:false,//action.isMov..
             };
         default:
             return state;      

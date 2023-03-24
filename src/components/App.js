@@ -6,7 +6,7 @@ import styles from '../styles/movieCards.module.css';
 import { data } from '../data';//array
 import { useContext, useEffect } from 'react';
 import { ReactReduxContext, useSelector } from "react-redux";
-import { addMovies, setFavoriteTab } from '../State_Management/actions';
+import { addToMovies, setFavoriteTab } from '../State_Management/actions';
 
 function App() {
   // console.log("from access through ReactReduxContext",useContext(ReactReduxContext));
@@ -24,7 +24,7 @@ function App() {
     //api call to get data of movie
     const response = data;
     //dispatch action that store this data to redux store
-    const dispatchedActionObject = store.dispatch(addMovies(response));
+    const dispatchedActionObject = store.dispatch(addToMovies(response));
     console.log("dispatched Action Object in useEffect after mounted", dispatchedActionObject);
     console.log('get state after mounter', store.getState());
 
@@ -37,7 +37,7 @@ function App() {
   console.log("state after useSelector/ after any change in Redux Store",state);
 
   // const { moviesList: movies, favorites: favoriteMoviesList, isFavoriteTab } = store.getState();// return {moviesList:[],favorites:[]}
-  const {movies}=state;//{movies,search}
+  const {movies,search}=state;//{movies,search}
   const { moviesList, favorites: favoriteMoviesList, isFavoriteTab } = movies;
 
   const displayMovies = isFavoriteTab ? favoriteMoviesList : moviesList;
@@ -63,7 +63,7 @@ function App() {
   return (
 
     <div className="App">
-      <Navbar />
+      <Navbar  search={search}/>
       <div className={styles.movies}>
         <div className={styles.tabs}>
           <button className={`moviesTab  ${isFavoriteTab ? '' : 'activeTab'}`} type='button' onClick={() => { favoriteTabHandler(false); }}>Movies</button>
