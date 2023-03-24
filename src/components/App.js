@@ -29,7 +29,7 @@ function App() {
     console.log('get state after mounter', store.getState());
 
 
-  }, [store])
+  }, [])
  
 
   //subscribe specific part + extract that part

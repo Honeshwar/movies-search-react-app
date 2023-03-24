@@ -1,5 +1,7 @@
 // import { createStore } from 'redux';
-import {configureStore,applyMiddleware} from '@reduxjs/toolkit';
+import { configureStore, applyMiddleware } from '@reduxjs/toolkit';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 import rootReducer from '../reducers';//combineReducers
 
 // console.log("combine Reducers",rootReducer);
@@ -15,24 +17,36 @@ import rootReducer from '../reducers';//combineReducers
 // }
 
 //modifying middleware using arrow function,to write less code
-const logger = ({dispatch,getState})=>(next)=>(action)=>{
-                //middleware code
-                console.log('action type = ',action.type);
-                next(action);//not call than never an dispatch happen
-            }
-    
+// const logger = ({ dispatch, getState }) => (next) => (action) => {
+//     //middleware code
+
+//     if (typeof action !== 'function') {
+//         console.log('action type = ', action.type);
+//     }
+//     next(action);//not call than never an dispatch happen
+// }
+
+// const thunk = ({dispatch,getState})=>(next)=>(action)=>{
+//                 //middleware code
+//               if(typeof action === 'function'){
+//                 action(dispatch);
+//                 return;//current dispatch execution stop here
+//             }
+//             next(action);
+
+// }
 
 
 const store = configureStore({
-    reducer:rootReducer ,
-    middleware:[logger],/// (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
+    reducer: rootReducer,
+    middleware: [logger,thunk],//(getDefaultMiddleware) => {const arr = getDefaultMiddleware().concat(logger);console.log(arr);return arr;},
     //  enhancers:
     //preloadedState:
-    //devTools"truen=by default
-    });
-console.log('store',store);
+    //devTools"true=by default
+});
+console.log('store', store);
 
-export  {store};
+export { store };
 
 // const store = createStore(movies);
 

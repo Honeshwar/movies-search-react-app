@@ -1,5 +1,5 @@
 import { combineReducers} from '@reduxjs/toolkit';
-import { ADD_MOVIES,ADD_TO_FAVORITE,REMOVE_FROM_FAVORITE,FAVORITE_TAB} from "../actions";
+import { ADD_MOVIES,ADD_TO_FAVORITE,REMOVE_FROM_FAVORITE,FAVORITE_TAB,ADD_MOVIES_TO_SEARCH_RESULT} from "../actions";
 
 //if state pass undefined from store , so this assign to state
 const initialMoviesReducerStateValue = {//by default state,state tree object inside multiple states presents
@@ -58,12 +58,20 @@ const initialMoviesReducerStateValue = {//by default state,state tree object ins
 
 
 const initialSearchReducerStateValue = {//by default state,state tree object inside multiple states presents
-   result:[]
+   results:{}
 };
 
 
  function searchReducer (state = initialSearchReducerStateValue,action){// pass state that present in redux store
-   return state;
+    
+    switch (action.type) {
+        case ADD_MOVIES_TO_SEARCH_RESULT:
+            return {
+               results:action.movie
+            };
+        default:
+            return state;      
+    }
 }
 
 // //root reducer
