@@ -49,6 +49,20 @@ console.log('store', store);
 
 export { store };
 
+//redux connect 
+
+export function connect(callback){
+    return function(Component){
+
+        //return comp. (eg. app) after connected to redux store
+        return function(){
+            const state = store.getState();
+            const dataPassAsProps = callback(state);//return an obj/data from state that an component need
+            return <Component {...dataPassAsProps} dispatch={store.dispatch} store={store}/>//return jsx element (app) after connected to redux store
+        }
+    }
+}
+
 // const store = createStore(movies);
 
 // console.log('Before state',store.getState());

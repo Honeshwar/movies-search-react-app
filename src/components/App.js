@@ -7,11 +7,15 @@ import { data } from '../data';//array
 import { useContext, useEffect } from 'react';
 import { ReactReduxContext, useSelector } from "react-redux";
 import { addToMovies, setFavoriteTab } from '../State_Management/actions';
+import { connect } from '../State_Management/store';
 
-function App() {
+function App(props) {
   // console.log("from access through ReactReduxContext",useContext(ReactReduxContext));
-  const { store } = useContext(ReactReduxContext);//{store:{},subscription:{},getSeverState:}//props;
-    useEffect(() => {
+  // const { store } = useContext(ReactReduxContext);//{store:{},subscription:{},getSeverState:}//props;
+ 
+  const {store} = props;
+ 
+  useEffect(() => {
     //subscribe
     // store.subscribe(() => {
     //   console.log("UPDATED");
@@ -87,5 +91,12 @@ function App() {
 
   );
 }
+function mapStateToProps(state){
+  return {
+    movies:state.movies,
+    search:state.search,
+  }
+}
 
-export default App;
+const connectedAppComponent = connect(mapStateToProps)(App);
+export default connectedAppComponent;
