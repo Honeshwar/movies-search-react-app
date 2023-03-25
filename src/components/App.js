@@ -5,9 +5,9 @@ import Navbar from './Navbar';
 import styles from '../styles/movieCards.module.css';
 import { data } from '../data';//array
 import { useContext, useEffect } from 'react';
-import { ReactReduxContext, useSelector } from "react-redux";
+import { ReactReduxContext, useSelector ,connect} from "react-redux";
 import { addToMovies, setFavoriteTab } from '../State_Management/actions';
-import { connect } from '../State_Management/store';
+// import { connect } from '../State_Management/store';
 
 function App(props) {
   // console.log("from access through ReactReduxContext",useContext(ReactReduxContext));
@@ -98,5 +98,7 @@ function mapStateToProps(state){
   }
 }
 
+// const connectedAppComponent = connect(mapStateToProps)(App)
 const connectedAppComponent = connect(mapStateToProps)(App);
+
 export default connectedAppComponent;
