@@ -10,12 +10,32 @@
     width: 40%;
     height:80%;
     border-radius: 10px;
+    font-size:1rem;
+}
+.searchInput::placeholder{
+    font-size:1rem;
+    text-align: center;
 }
 
 .searchBtn{
+    font-size:1rem;
     width: 10%;
     height:80%;
     border-radius: 10px;
+    background-color: aliceblue;
+    color:black;
+  
+    /* border-bottom: 1px solid ; */
+    /* border-right: 1px solid ; */
+}
+.searchBtn:hover{
+    /* background-color:rgb(191, 191, 194) ;
+    color:aliceblue; */
+    margin-left: 20px;
+     /* background-color: midnightblue; */
+
+      /* border-bottom: 1px solid  ; */
+    /* border-right: 1px solid ; */
 }
 .movieSearchBox{
     width: 100%;

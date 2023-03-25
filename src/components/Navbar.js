@@ -34,6 +34,7 @@ const addToMoviesClickHandler = ()=>{
 
   return(<>
     <div className={styles.navbar}>
+    <h1 style={{color:"white",position:"fixed",top:'-15',left:20}}>MOVIES HUNT</h1>
      {/* value=000,in input display 000 */}
       <input onChange={(e)=>setSearchText(e.target.value)} value={searchText} className={styles.searchInput} type='text' placeholder='search movies here....' required></input>
       <button onClick={searchHandler} className={styles.searchBtn} type='submit'>Search</button>
