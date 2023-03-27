@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Honeshwar/movies-search-react-app.git/static/css/main.c8399c1f.css",
+    "main.js": "/Honeshwar/movies-search-react-app.git/static/js/main.a63c8d9e.js",
+    "index.html": "/Honeshwar/movies-search-react-app.git/index.html",
+    "main.c8399c1f.css.map": "/Honeshwar/movies-search-react-app.git/static/css/main.c8399c1f.css.map",
+    "main.a63c8d9e.js.map": "/Honeshwar/movies-search-react-app.git/static/js/main.a63c8d9e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c8399c1f.css",
+    "static/js/main.a63c8d9e.js"
+  ]
+}
