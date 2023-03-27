@@ -1,12 +1,15 @@
 import React, { useContext, useState } from 'react'
-import {useDispatch,ReactReduxContext} from 'react-redux';
+import {useDispatch,ReactReduxContext, connect} from 'react-redux';
 import { addMovieFromSearchResultToMoviesList, handleSearchMovie } from '../State_Management/actions';
 import styles from "../styles/navbar.module.css"
 
 function Navbar(props) {
 const [searchText, setSearchText] = useState('');
-const store = useContext(ReactReduxContext).store;
-const {result:movie,isMovieInSearchResult} = props.search;
+// const store = useContext(ReactReduxContext).store;
+// const {result:movie,isMovieInSearchResult} = props.search;
+
+const {store} = props;console.log("store in navbar",props);
+const {result:movie,isMovieInSearchResult} = props;
 
 const searchHandler = ()=>{
   //ui api part different so not api call
@@ -23,12 +26,12 @@ const searchHandler = ()=>{
   // console.log(dispatchFunc);
 
 
-  store.dispatch(handleSearchMovie(searchText));
+  props.dispatch(handleSearchMovie(searchText));
 }
 
 
 const addToMoviesClickHandler = ()=>{
-  store.dispatch(addMovieFromSearchResultToMoviesList(movie));
+  props.dispatch(addMovieFromSearchResultToMoviesList(movie));
 }
 
 
@@ -62,4 +65,20 @@ const addToMoviesClickHandler = ()=>{
   )
 }
 
-export default Navbar
+function mapStateToProps(state){
+  return {
+    search:state.search,
+  }
+}
+function mapDispatchToProps(dispatch){
+  return {
+    dispatch
+  }
+}
+
+// const connectedAppComponent = connect(mapStateToProps)(App)
+const connectedNavbarComponent = connect(mapStateToProps,mapDispatchToProps)//return HOC
+(Navbar);//return wrapper component(use so an comp pass props to app component ma)
+
+export default connectedNavbarComponent;
+// export default Navbar

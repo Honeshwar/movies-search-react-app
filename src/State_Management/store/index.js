@@ -58,7 +58,11 @@ export function connect(callback){
         return function(){
             const state = store.getState();
             const dataPassAsProps = callback(state);//return an obj/data from state that an component need
-            return <Component {...dataPassAsProps} dispatch={store.dispatch} store={store}/>//return jsx element (app) after connected to redux store
+            return <Component 
+                {...dataPassAsProps} 
+                dispatch={store.dispatch} 
+                // store={store}
+                />//return jsx element (app) after connected to redux store
         }
     }
 }

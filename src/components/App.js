@@ -14,6 +14,7 @@ function App(props) {
   // const { store } = useContext(ReactReduxContext);//{store:{},subscription:{},getSeverState:}//props;
  
   const {store} = props;
+  // console.log("props in app ",props);
  
   useEffect(() => {
     //subscribe
@@ -39,7 +40,7 @@ function App(props) {
   //subscribe specific part + extract that part
   const state = useSelector((state)=>state);
   console.log("state after useSelector/ after any change in Redux Store",state);
-
+  // console.log("props in app ",props);
   // const { moviesList: movies, favorites: favoriteMoviesList, isFavoriteTab } = store.getState();// return {moviesList:[],favorites:[]}
   const {movies,search}=state;//{movies,search}
   const { moviesList, favorites: favoriteMoviesList, isFavoriteTab } = movies;
@@ -67,7 +68,7 @@ function App(props) {
   return (
 
     <div className="App">
-      <Navbar  search={search}/>
+       <Navbar /> {/*search={search}} */}
       <div className={styles.movies}>
         <div className={styles.tabs}>
           <button className={`moviesTab  ${isFavoriteTab ? '' : 'activeTab'}`} type='button' onClick={() => { favoriteTabHandler(false); }}>Movies</button>
@@ -91,6 +92,7 @@ function App(props) {
 
   );
 }
+
 function mapStateToProps(state){
   return {
     movies:state.movies,
@@ -99,6 +101,7 @@ function mapStateToProps(state){
 }
 
 // const connectedAppComponent = connect(mapStateToProps)(App)
-const connectedAppComponent = connect(mapStateToProps)(App);
+const connectedAppComponent = connect(mapStateToProps)//return HOC
+(App);//return wrapper component(use so an comp pass props to app component ma)
 
 export default connectedAppComponent;
