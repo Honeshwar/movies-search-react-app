@@ -36,6 +36,7 @@ const searchHandler = ()=>{
 
 const addToMoviesClickHandler = ()=>{
   props.dispatch(addMovieFromSearchResultToMoviesList(movie));
+  setSearchText('');
 }
 
 
