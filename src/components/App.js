@@ -13,8 +13,8 @@ function App(props) {
   // console.log("from access through ReactReduxContext",useContext(ReactReduxContext));
   // const { store } = useContext(ReactReduxContext);//{store:{},subscription:{},getSeverState:}//props;
  
-  const {store} = props;
-  // console.log("props in app ",props);
+  const {dispatch,store} = props;
+  // console.log(dispatch,"props in app ",props);
  
   useEffect(() => {
     //subscribe
@@ -29,20 +29,21 @@ function App(props) {
     //api call to get data of movie
     const response = data;
     //dispatch action that store this data to redux store
-    const dispatchedActionObject = store.dispatch(addToMovies(response));
+    const dispatchedActionObject = dispatch(addToMovies(response));
     console.log("dispatched Action Object in useEffect after mounted", dispatchedActionObject);
-    console.log('get state after mounter', store.getState());
+    // console.log('get state after mounter', store.getState());
 
 
   }, [])
  
 
   //subscribe specific part + extract that part
-  const state = useSelector((state)=>state);
-  console.log("state after useSelector/ after any change in Redux Store",state);
+  // const state = useSelector((state)=>state);
+  // console.log("state after useSelector/ after any change in Redux Store",state);
   // console.log("props in app ",props);
   // const { moviesList: movies, favorites: favoriteMoviesList, isFavoriteTab } = store.getState();// return {moviesList:[],favorites:[]}
-  const {movies,search}=state;//{movies,search}
+
+  const {movies}=props;//{movies,search}
   const { moviesList, favorites: favoriteMoviesList, isFavoriteTab } = movies;
 
   const displayMovies = isFavoriteTab ? favoriteMoviesList : moviesList;
@@ -61,7 +62,7 @@ function App(props) {
   // favoriteTabHandler
   const favoriteTabHandler = (favoriteTab) => {
     if (favoriteTab === isFavoriteTab) { return };
-    const dispatchedActionObject = store.dispatch(setFavoriteTab(favoriteTab));//store dispatch the action and pass to reducer
+    const dispatchedActionObject = dispatch(setFavoriteTab(favoriteTab));//store dispatch the action and pass to reducer
     // console.log("dispatched Action Object ", dispatchedActionObject);
 
   }
@@ -81,7 +82,7 @@ function App(props) {
               movie={movie}
               key={`movie-${index}`}
               isFavorite={isFavorite(movie)}
-              store={store}
+              dispatch={dispatch}
             />
           ))}
 
@@ -100,8 +101,13 @@ function mapStateToProps(state){
   }
 }
 
+function mapDispatchToProps(dispatch){
+  return {
+    dispatch
+  }
+}
 // const connectedAppComponent = connect(mapStateToProps)(App)
-const connectedAppComponent = connect(mapStateToProps)//return HOC
+const connectedAppComponent = connect(mapStateToProps,mapDispatchToProps)//return HOC
 (App);//return wrapper component(use so an comp pass props to app component ma)
 
 export default connectedAppComponent;

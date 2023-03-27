@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import {useDispatch,ReactReduxContext, connect} from 'react-redux';
+import {useDispatch,ReactReduxContext, connect, useSelector} from 'react-redux';
 import { addMovieFromSearchResultToMoviesList, handleSearchMovie } from '../State_Management/actions';
 import styles from "../styles/navbar.module.css"
 
@@ -8,8 +8,12 @@ const [searchText, setSearchText] = useState('');
 // const store = useContext(ReactReduxContext).store;
 // const {result:movie,isMovieInSearchResult} = props.search;
 
-const {store} = props;console.log("store in navbar",props);
-const {result:movie,isMovieInSearchResult} = props;
+// const {store} = props;
+console.log("store in navbar",props);
+const state = useSelector((state)=>state);
+console.log("state after useSelector/ after any change in Redux Store",state);
+
+const {result:movie,isMovieInSearchResult} = state.search;
 
 const searchHandler = ()=>{
   //ui api part different so not api call
