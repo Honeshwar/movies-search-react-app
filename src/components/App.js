@@ -71,10 +71,18 @@ function App(props) {
     <div className="App">
        <Navbar /> {/*search={search}} */}
       <div className={styles.movies}>
-        <div className={styles.tabs}>
-          <button className={`moviesTab  ${isFavoriteTab ? '' : 'activeTab'}`} type='button' onClick={() => { favoriteTabHandler(false); }}>Movies</button>
-          <button className={`favoriteTab  ${isFavoriteTab ? 'activeTab' : ''}`} type='button' onClick={() => { favoriteTabHandler(true); }}>Favorites</button>
-        </div>
+        {/* <div className={styles.tabs}> */}
+          {/* <button className={`moviesTab  ${isFavoriteTab ? '' : 'activeTab'}`} type='button' onClick={() => { favoriteTabHandler(false); }}>Movies</button>
+          <button className={`favoriteTab  ${isFavoriteTab ? 'activeTab' : ''}`} type='button' onClick={() => { favoriteTabHandler(true); }}>Favorites</button> */}
+          <ul class={`nav nav-tabs ${styles.tabs}` }>
+            <li class="nav-item">
+              <a class={`nav-link  ${isFavoriteTab ? '' : 'active'}`} aria-current="page" onClick={() => { favoriteTabHandler(false); }}>Movies</a>
+            </li>
+            <li class="nav-item ">
+              <a class={`nav-link  ${isFavoriteTab ? 'active' : ''}`}  onClick={() => { favoriteTabHandler(true); }}>Favorites</a>
+            </li>
+          </ul>
+        {/* </div> */}
 
         <div className={styles.movieList}>
           {displayMovies.map((movie, index) => (

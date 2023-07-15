@@ -15,7 +15,8 @@ console.log("state after useSelector/ after any change in Redux Store",state);
 
 const {result:movie,isMovieInSearchResult} = state.search;
 
-const searchHandler = ()=>{
+const searchHandler = (e)=>{
+e.preventDefault();
   //ui api part different so not api call
   // const r= handleSearchMovie(searchText);
   // r?.then((response)=> response.json())//json convert
@@ -42,10 +43,12 @@ const addToMoviesClickHandler = ()=>{
 
   return(<>
     <div className={styles.navbar}>
-    <h1 style={{color:"white",position:"fixed",top:'-15',left:20}}>MOVIES HUNT</h1>
+    <h1 className={styles.brandName} >MOVIES HUNT</h1>
      {/* value=000,in input display 000 */}
-      <input onChange={(e)=>setSearchText(e.target.value)} value={searchText} className={styles.searchInput} type='text' placeholder='search movies here....' required></input>
-      <button onClick={searchHandler} className={styles.searchBtn} type='submit'>Search</button>
+     <form onSubmit={searchHandler}>
+     <input onChange={(e)=>setSearchText(e.target.value)} value={searchText} className={styles.searchInput} type='text' placeholder='search movies here....' required></input>
+      <button className={styles.searchBtn} type='submit'>Search</button>
+     </form>
     </div>
     
      {isMovieInSearchResult && 
@@ -57,9 +60,9 @@ const addToMoviesClickHandler = ()=>{
                 <div className={styles.movieDetails}>
                     <h3>{movie.Title}</h3>
                     <p>{movie.Plot}</p>
-                    <div className={styles.addToMoviesBtnmm}>
+                    <div>
                         <input className={styles.addToMoviesBtn} type='button' value='Add To Movies' onClick={addToMoviesClickHandler}></input>
-                        
+                        <input className={styles.closeBtn} type='button' value='Close' onClick={addToMoviesClickHandler}></input>
                     </div>
                 </div>
           </div>

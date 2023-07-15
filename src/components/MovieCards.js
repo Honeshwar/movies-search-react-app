@@ -40,7 +40,9 @@ function MovieCards ({ movie , isFavorite ,dispatch}) {
                 <h3>{movie.Title}</h3>
                 <p>{movie.Plot}</p>
                 <div className={styles.movieRatingFavorite}>
-                    <span>{movie.Ratings[0].Value}</span>
+                    <span>
+                        <img className={styles.reviewIcon} src='https://cdn-icons-png.flaticon.com/128/1828/1828884.png' alt='review icon'></img>
+                        {movie.Ratings[0].Value}</span>
                     {isFavorite?
                     <input className={styles.unFavorite} type='button' value='UnFavorite' onClick={unFavoriteClickHandler}></input>
                     :
