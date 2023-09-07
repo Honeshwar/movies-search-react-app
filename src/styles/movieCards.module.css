@@ -1,0 +1,133 @@
+
+.movies{
+    width: 100%;
+    height: 87%;
+}
+
+.tabs{
+    width: 100%;
+    height: fit-content;
+    padding-top:10px ;
+    /* display: flex;
+    align-items: center;
+    */
+    background-color: aliceblue; 
+}
+.movieList{
+    width: 100%;
+    height: 93.5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 5px;
+    overflow-y: scroll;
+    
+}
+.movieList::-webkit-scrollbar{
+    width: 5px;
+    
+}
+.movieList::-webkit-scrollbar-track{
+    /* border-radius: 10px; */
+    background-color: rgb(8, 0, 247);
+}
+.movieList::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: rgb(255, 251, 251);
+}
+
+
+.movieBox{
+    width: 300px;
+    height: 400px;
+    list-style: none;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 2px 2px rgb(179, 175, 175);
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0 40px;
+    padding: 10px;
+   
+}
+.movieImage{
+    width: 100%;
+    height: 50%;    
+}
+.movieImage img{
+   width: 100%;
+    height:100%;
+    border-radius: 10px;
+}
+
+.movieDetails{
+    width: 100%;
+    height: 50%;
+    padding: 5px;
+
+    display: flex;
+    flex-direction: column;
+
+}
+.movieDetails h3{
+   padding-top: 5px;
+   font-size: 1.2rem;
+}
+
+.movieDetails p{
+    text-align: justify;
+    word-wrap: break-word;
+    font-size: .85rem;
+    padding-inline:5px ;
+    overflow: hidden;
+}
+.movieDetails p::-webkit-scrollbar{
+    display: none;
+}
+.movieDetails div{
+    width: 100%;
+}
+
+.movieRatingFavorite{
+    /* border: solid; */
+    /* padding: 10px 10px 0 0; */
+}
+.movieRatingFavorite span{
+   text-align: center;
+   vertical-align: middle;
+}
+.reviewIcon{
+    width: 30px;
+    padding-inline: 5px;
+    padding-bottom: 5px;
+}
+.favorite{
+   margin-left: 30px;
+   width: 70px;
+   height: 30px;
+   background-color: blue;
+   color: white;
+
+   border-bottom: 1px solid;
+   border-right: 1px solid;
+}
+.unFavorite{
+    margin-left: 30px;
+    width: 100px;
+    height: 30px;
+    background-color: rgb(207, 5, 5);
+    color: white;
+ 
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+}
+.favorite:hover{
+    border-left: 1px solid;
+    border-top: 1px solid;
+}
+
+.unFavorite:hover
+{
+    border-left: 1px solid;
+    border-top: 1px solid;
+}
